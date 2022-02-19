@@ -1,2 +1,6 @@
-# MobileApplicationsDevelopment_2022
-Курс "Разработка мобильных приложений", 2022
+# MobileApplicationsDevelopment
+Материалы к курсу "Разработка мобильных приложений"
+
+**@Lenmar Abdurayimov (Ленмар Абдурайимов)**  
+**2022**
+
