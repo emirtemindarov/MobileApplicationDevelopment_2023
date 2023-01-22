@@ -1,6 +1,6 @@
 # MobileApplicationsDevelopment
-Материалы к курсу "Разработка мобильных приложений"
+Materials to the course "Mobile Applications Development"
 
-**@Lenmar Abdurayimov (Ленмар Абдурайимов)**  
-**2022**
+**@Lenmar Abdurayimov**  
+**2023**
 
