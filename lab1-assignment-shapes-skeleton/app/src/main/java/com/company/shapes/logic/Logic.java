@@ -29,7 +29,7 @@ public class Logic
      * results. (It is also the 'in-put' from where we get values
      * from, but it only needs 1 name, and 'out' is good enough)
      */
-    private OutputInterface mOut;
+    private final OutputInterface mOut;
 
     /**
      * These are the numeric values that you will receive from the
@@ -177,12 +177,12 @@ public class Logic
 
     // Площадь круга = pi * R^2
     public static double circleArea(double radius) {
-        return 3.1415 * (radius * radius);
+        return Math.PI * (radius * radius);
     }
 
     // Длина круга = 2 * pi * R
     public static double circleCircumference(double radius) {
-        return 2 * 3.1415 * radius;
+        return 2 * Math.PI * radius;
     }
 
     // Площадь правильного треугольника = 1/2 * основание * высота
@@ -190,14 +190,12 @@ public class Logic
         return 0.5 * base * height;
     }
 
-    // Периметр правильного треугольника = сумме двух боковых сторон и основания
+    // Периметр правильного треугольника равен сумме основания, высоты и гипотенузы
     public static double rightTrianglePerimeter(double base, double height) {
-        // Половина основания
-        double halfBase = 0.5 * base;
-        // Находим боковую сторону по теореме Пифагора
-        double side = sqrt( (halfBase * halfBase) + (height * height) );
+        // Расчет гипотенузы (с = sqrt(a^2 + b^2))
+        double hypotenuse = Math.sqrt((base * base) + (height * height));
         // Результат
-        return (2 * side) + base;
+        return base + height + hypotenuse;
     }
 
     // Объем прямоугольника = длина * ширина * высота
@@ -215,13 +213,16 @@ public class Logic
         return (2 * surface1) + (2 * surface2) + (2 * surface3);
     }
 
-    // Объем сферы = pi * R^2
+    // Объем сферы = 4/3 * pi * R^3
     public static double sphereVolume(double radius) {
-        return (3.1415 * (radius * radius)) / 3;
+        // R^3
+        double radius_v_cube = radius * radius * radius;
+        // Результат
+        return (4 * Math.PI * radius_v_cube) / 3;
     }
 
     // Площадь сферы = 4 * pi * R^2
     public static double sphereSurfaceArea(double radius) {
-        return 4 * 3.1415 * (radius * radius);
+        return 4 * Math.PI * (radius * radius);
     }
 }
