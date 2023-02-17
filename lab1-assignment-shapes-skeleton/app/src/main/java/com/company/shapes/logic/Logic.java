@@ -160,6 +160,68 @@ public class Logic
         }
     }
 
-    // TODO -- add your code here
 
+
+
+
+    // TODO -- add your code here
+    // Площадь прямоугольника = длина * высота
+    public static double rectangleArea(double length, double width) {
+        return length * width;
+    }
+
+    // Периметр прямоугольника = 2 длины + 2 высоты
+    public static double rectanglePerimeter(double length, double width) {
+        return (2 * length) + (2 * width);
+    }
+
+    // Площадь круга = pi * R^2
+    public static double circleArea(double radius) {
+        return 3.1415 * (radius * radius);
+    }
+
+    // Длина круга = 2 * pi * R
+    public static double circleCircumference(double radius) {
+        return 2 * 3.1415 * radius;
+    }
+
+    // Площадь правильного треугольника = 1/2 * основание * высота
+    public static double rightTriangleArea(double base, double height) {
+        return 0.5 * base * height;
+    }
+
+    // Периметр правильного треугольника = сумме двух боковых сторон и основания
+    public static double rightTrianglePerimeter(double base, double height) {
+        // Половина основания
+        double halfBase = 0.5 * base;
+        // Находим боковую сторону по теореме Пифагора
+        double side = sqrt( (halfBase * halfBase) + (height * height) );
+        // Результат
+        return (2 * side) + base;
+    }
+
+    // Объем прямоугольника = длина * ширина * высота
+    public static double boxVolume(double length, double width, double depth) {
+        return length * width * depth;
+    }
+
+    // Периметр прямоугольника = сумме периметров всех сторон
+    public static double boxSurfaceArea(double length, double width, double depth) {
+        // Периметр сторон
+        double surface1 = length * width;
+        double surface2 = width * depth;
+        double surface3 = length * depth;
+        // Результат
+        return (2 * surface1) + (2 * surface2) + (2 * surface3);
+    }
+
+    // Объем сферы = pi * R^2
+    public static double sphereVolume(double radius) {
+        return (3.1415 * (radius * radius)) / 3;
+    }
+
+    // Площадь сферы = 4 * pi * R^2
+    public static double sphereSurfaceArea(double radius) {
+        return 4 * 3.1415 * (radius * radius);
+    }
 }
