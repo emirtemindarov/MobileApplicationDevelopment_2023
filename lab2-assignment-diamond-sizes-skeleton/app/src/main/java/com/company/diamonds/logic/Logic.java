@@ -1,6 +1,10 @@
 package com.company.diamonds.logic;
 
+import android.renderscript.ScriptGroup;
+
 import com.company.diamonds.ui.OutputInterface;
+
+import java.sql.Statement;
 
 /**
  * This is where the logic of this App is centralized for this assignment.
@@ -43,10 +47,116 @@ public class Logic
      * This is the method that will (eventually) get called when the
      * on-screen button labeled 'Process...' is pressed.
      */
+
     public void process(int size) {
 
         // TODO -- add your code here
+        // Высота ромба
+        int romb_height = (size * 2) - 1;
 
+        // Ширина ромба
+        int romb_width = size * 2;
+
+        // Верхняя часть рамки
+        String result = concat("+", symbols("-", romb_width));
+        result += "\n";
+
+        // Использование замыкания. Шаблон построения от верхней части ромба (зависит от номера строки i)
+        MyClosure firstHalf = (int i) -> {
+            return concat(
+                    "/",
+                    symbols(getCurrentStringSign(i), (i - 1) * 2),
+                    "\\"
+            );
+        };
+
+        // Использование замыкания. Шаблон построения середины ромба (номер строки i совпадает с размером ромба)
+        MyClosure midLine = (int i) -> {
+            return concat("<",
+                    symbols(getCurrentStringSign(i), (i - 1) * 2),
+                    ">"
+            );
+        };
+
+        // Использование замыкания. Шаблон построения нижней части ромба (зависит от номера строки i)
+        MyClosure secondHalf = (int i) -> {
+            return concat("\\",
+                    symbols(getCurrentStringSign(i), ((size * 2 - i) - 1) * 2),
+                    "/"
+            );
+        };
+
+        // Сохранение текущего варианта замыкания
+        MyClosure currentStatement;
+
+        // Основной цикл построения ромба и боковых стенок рамки
+        for (int i = 1; i <= romb_height; i++) {
+            // Определение шаблона построения части ромба через замыкания (для верхней части ромба)
+            if (i < size) {
+                currentStatement = firstHalf;
+            // Определение шаблона построения части ромба через замыкания (для средней линии)
+            } else if (i == size) {
+                currentStatement = midLine;
+            // Определение шаблона построения части ромба через замыкания (для нижней части ромба)
+            } else {
+                currentStatement = secondHalf;
+            }
+
+            // Композиция строки
+            result += concat(
+                    "|",
+                    concat(
+                            // пробелы до и после ромба в текущей строке (строки вида "   " в начале и в конце)
+                            symbols(" ", Math.abs(size - i)),
+                            // часть ромба для текущей строки (строка вида "/====\")
+                            currentStatement.resultFrom(i)
+                    )
+            );
+
+            // Перенос строки
+            result += "\n";
+        }
+
+        // Нижняя часть рамки
+        result += concat("+", symbols("-", romb_width));
+
+        // Вывод строки на экран
+        mOut.print(result);
     }
 
+    // Конструктор строки c одинаковыми левыми и правыми частями, а также со средней частью определенной длины
+    private String concat(String sideStr, String midStr) {
+        String result = sideStr + midStr + sideStr;
+        return result;
+    }
+
+    // Конструктор строки c разными левыми и правыми частями, а также со средней частью определенной длины
+    private String concat(String leftStr, String midStr, String rightStr) {
+        String result = leftStr + midStr + rightStr;
+        return result;
+    }
+
+    // Конструктор строки с определенным количеством символов
+    private String symbols(String symbol, int size) {
+        String result = "";
+        for (int i = 0; i < size; i++) {
+            result += symbol;
+        }
+        return result;
+    }
+
+    // Получить символ для заполнения текущей строки внутри ромба
+    private String getCurrentStringSign(int signCode) {
+        if (signCode % 2 == 0) {
+            return "-";
+        } else {
+            return "=";
+        }
+    }
+
+    // Интерфейс для реализации замыкания
+    interface MyClosure {
+        // Получить результат выполнения замыкания
+        public String resultFrom(int i);
+    }
 }
