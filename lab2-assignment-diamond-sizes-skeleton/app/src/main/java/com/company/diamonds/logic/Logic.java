@@ -50,6 +50,7 @@ public class Logic
 
     public void process(int size) {
 
+
         // TODO -- add your code here
         // Высота ромба
         int romb_height = (size * 2) - 1;
