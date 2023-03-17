@@ -1,6 +1,11 @@
 package com.company.birthdayprob.logic;
 
+import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+import java.util.Vector;
 
 import com.company.birthdayprob.ui.OutputInterface;
 
@@ -76,7 +81,36 @@ public class Logic
      */
     public double calculate(int size, int count) {
         // TODO -- add your code here
+        // Количество успешных прогонов
+        double success_count = 0;
 
+        for (int i = 0; i < count; i++) {
+            Random rng = new Random();
+            rng.setSeed(i);
+
+            List list = new ArrayList();
+            for (int j = 0; j < size; j++) {
+                list.add(rng.nextInt(365));
+            }
+
+            Boolean stopFlag = false;
+            for (int j = 0; j < size - 1; j++) {
+                if (stopFlag) {
+                    break;
+                }
+                for (int k = j + 1; k < size; k++) {
+                    if (list.get(j) == list.get(k)) {
+                        success_count++;
+                        stopFlag = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        double result = (success_count * 100) / count;
+
+        return result;
     }
     // TODO - add your code here
 }
