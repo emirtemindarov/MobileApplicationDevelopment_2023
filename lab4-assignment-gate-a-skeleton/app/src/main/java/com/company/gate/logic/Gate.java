@@ -24,7 +24,7 @@ public class Gate {
     public boolean open(int direction) {
         if (setSwing(direction)) {
             return true;
-        } else {
+        }else {
             return false;
         }
     }
