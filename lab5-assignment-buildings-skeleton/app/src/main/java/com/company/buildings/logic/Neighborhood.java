@@ -13,5 +13,25 @@ import com.company.buildings.ui.OutputInterface;
 public final class Neighborhood {
 
     // TODO - Put your code here.
-    
+    public static void print(Building[] buildings, String header, OutputInterface out) {
+        out.print(header);
+        out.print("----------");
+        String prefix = "";
+        if (header == "Houses") {
+            prefix = "Owner";
+        } else if (header == "Offices") {
+            prefix = "Business";
+        }
+        for (Building building : buildings) {
+            out.print(prefix + ": " + building.toString());
+        }
+    }
+
+    public static int calcArea(Building[] buildings) {
+        int totalArea = 0;
+        for (Building building : buildings) {
+            totalArea += building.calcLotArea();
+        }
+        return totalArea;
+    }
 }
