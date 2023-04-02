@@ -88,10 +88,7 @@ public class Logic
             Random rng = new Random();
             rng.setSeed(i);
 
-            List list = new ArrayList();
-            for (int j = 0; j < size; j++) {
-                list.add(rng.nextInt(365));
-            }
+            List list = randList(size, rng);
 
             Boolean stopFlag = false;
             for (int j = 0; j < size - 1; j++) {
@@ -112,5 +109,13 @@ public class Logic
 
         return result;
     }
+
     // TODO - add your code here
+    public List randList(int size, Random rng) {
+        List list = new ArrayList();
+        for (int j = 0; j < size; j++) {
+            list.add(rng.nextInt(365));
+        }
+        return list;
+    }
 }
