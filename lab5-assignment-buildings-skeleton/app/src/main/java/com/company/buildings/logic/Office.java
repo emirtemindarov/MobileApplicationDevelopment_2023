@@ -46,12 +46,12 @@ public class Office
     }
 
     public String toString() {
-        String result = "";
+        String result = "Business:";
 
         if (mBusinessName != null) {
             result += mBusinessName;
         } else {
-            result += "unoccupied";
+            result += " unoccupied";
         }
 
         if (mParkingSpaces != 0) {

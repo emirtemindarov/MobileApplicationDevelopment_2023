@@ -59,6 +59,6 @@ public class Building {
     }
 
     public String toString() {
-        return "";
+        return "Owner: n/a";
     }
 }

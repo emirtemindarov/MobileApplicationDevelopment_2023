@@ -24,12 +24,12 @@ public class Cottage
     }
 
     public String toString() {
-        String result = "";
+        String result = "Owner:";
 
         if (super.getOwner() != null) {
             result += super.getOwner();
         } else {
-            result += "n/a";
+            result += " n/a";
         }
 
         if (super.hasPool()) {

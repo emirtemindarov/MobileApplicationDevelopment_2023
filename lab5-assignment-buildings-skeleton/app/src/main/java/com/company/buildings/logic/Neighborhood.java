@@ -16,14 +16,8 @@ public final class Neighborhood {
     public static void print(Building[] buildings, String header, OutputInterface out) {
         out.print(header);
         out.print("----------");
-        String prefix = "";
-        if (header == "Houses") {
-            prefix = "Owner";
-        } else if (header == "Offices") {
-            prefix = "Business";
-        }
         for (Building building : buildings) {
-            out.print(prefix + ": " + building.toString());
+            building.toString();
         }
     }
 

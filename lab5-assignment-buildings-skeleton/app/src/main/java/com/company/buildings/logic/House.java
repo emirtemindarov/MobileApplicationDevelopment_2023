@@ -50,12 +50,12 @@ public class House
     }
 
     public String toString() {
-        String result = "";
+        String result = "Owner:";
 
         if (mOwner != null) {
-            result += mOwner;
+            result += " " + mOwner;
         } else {
-            result += "n/a";
+            result += " n/a";
         }
 
         if (mPool) {
