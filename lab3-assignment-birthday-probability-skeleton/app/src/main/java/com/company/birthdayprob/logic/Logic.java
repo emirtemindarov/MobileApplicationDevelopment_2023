@@ -84,38 +84,37 @@ public class Logic
         // Количество успешных прогонов
         double success_count = 0;
 
+        // Прогоны
         for (int i = 0; i < count; i++) {
             Random rng = new Random();
             rng.setSeed(i);
 
-            List list = randList(size, rng);
-
             Boolean stopFlag = false;
-            for (int j = 0; j < size - 1; j++) {
+            List<Integer> list = new ArrayList<>();
+            // Добавление элементов в массив
+            for (int j = 0; j < size; j++) {
                 if (stopFlag) {
                     break;
                 }
-                for (int k = j + 1; k < size; k++) {
-                    if (list.get(j) == list.get(k)) {
+                int newItem = rng.nextInt(365);
+
+                // Проверка на повторение
+                for (Integer item : list) {
+                    if (
+                            list.size() != 0 &&
+                                    newItem == item
+                    ) {
                         success_count++;
                         stopFlag = true;
                         break;
                     }
                 }
+                list.add(newItem);
             }
         }
 
         double result = (success_count * 100) / count;
 
         return result;
-    }
-
-    // TODO - add your code here
-    public List randList(int size, Random rng) {
-        List list = new ArrayList();
-        for (int j = 0; j < size; j++) {
-            list.add(rng.nextInt(365));
-        }
-        return list;
     }
 }
