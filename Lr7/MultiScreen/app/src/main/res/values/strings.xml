@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MultiScreen</string>
+    <string name="main_activity_title">Куда бы поехать в отпуск?</string>
+    <string name="canari">Канары</string>
+    <string name="curili">Курилы</string>
+    <string name="maldivi">Мальдивы</string>
+    <string name="filipini">Филиппины</string>
+    <string name="title_activity_curili">CuriliActivity</string>
+    <string name="title_activity_canari">CanariActivity</string>
+    <string name="title_activity_maldivi">MaldiviActivity</string>
+    <string name="title_activity_filipini">FilipiniActivity</string>
+    <string name="enjoy">Enjoy yourself!</string>
+</resources>
