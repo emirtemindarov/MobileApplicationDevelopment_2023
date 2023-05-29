@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Lr6</string>
+    <string name="start">Попробуйте угадать число (1 – 100)</string>
+    <string name="behind">Введеное число меньше загаданного</string>
+    <string name="ahead">Введеное число больше загаданного</string>
+    <string name="hit">Ура, победа!</string>
+    <string name="restart">Начать новую игру</string>
+    <string name="error">Введите число от 1 до 100</string>
+    <string name="check">Проверить</string>
+</resources>
